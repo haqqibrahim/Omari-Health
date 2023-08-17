@@ -51,27 +51,40 @@ module.exports = router;
 let transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "enessyibrahim@gmail.com",
-    pass: "zaggdflgzqjizzti",
+    user: "dev.omari.ai@gmail.com",
+    pass: "aswbgigvkdbtwoww",
   },
 });
 
 router.post("/link", async (req, res) => {
   const { doctor, link } = req.body;
   let mailOptions = {
-    from: "enessyibrahim@gmail.com", // sender address
+    from: "dev.omari.ai@gmail.com", // sender address
     to: doctor, // list of receivers
     subject: "Omari Health consultation", // Subject line
     text: `Please find the link to the meeting. ${link}`, // plain text body
   };
+  let mailOptions2 = {
+    from: "dev.omari.ai@gmail.com", // sender address
+    to: "yusraadeyeri45@gmail.com", // list of receivers
+    subject: "New Omari Health consultation meeting", // Subject line
+    text: `There is a new consultation meeting in progress. ${link}`, // plain text body
+  };
 
   // Send the email
-  transporter.sendMail(mailOptions, (err, info) => {
+  transporter.sendMail(mailOptions, (err, info1) => {
     if (err) {
       console.error(err);
       res.status(500).send("Failed to send the statement.");
     }
-    console.log("Email sent:", info.response);
+    console.log("Email sent:", info1.response);
+  });
+  transporter.sendMail(mailOptions2, (err, info2) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Failed to send the statement.");
+    }
+    console.log("Email sent:", info2.response);
     return res.redirect(302, `/patient/sent`);
   });
 });
