@@ -20,11 +20,11 @@ router.get("/login", (req, res) => {
   const error = req.query.error;
   const error2 = req.query.errorPassword;
   if (error) {
-    res.render("patient/login", { error: "Email not found" });
+    res.render("Patient/login", { error: "Email not found" });
   } else if (error2) {
-    res.render("patient/login", { error: "Incorrect Password" });
+    res.render("Patient/login", { error: "Incorrect Password" });
   } else {
-    res.render("patient/login", { error: "" });
+    res.render("Patient/login", { error: "" });
   }
 });
 

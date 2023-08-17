@@ -9,6 +9,7 @@ const app = express();
 // Set the view engine to EJS
 app.set("view engine", "ejs");
 
+
 // Use body-parser middleware to parse request bodies
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());

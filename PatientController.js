@@ -54,55 +54,6 @@ exports.login = async (req, res) => {
   }
 };
 
-// exports.find = async (req, res) => {
-//   try {
-//     const { email, latitude, longitude, specialty } = req.body;
-
-//     const specialists = await Doctor.find({ specialty });
-//     console.log(`specialists: ${specialists}`);
-//     // Filter out specialists with missing or invalid location data
-//     const validSpecialists = specialists.filter(
-//       (s) => s.location && s.location.lat && s.location.lng
-//     );
-
-//     console.log(validSpecialists);
-
-//     // Sort the valid specialists by distance from the patient's location
-//     const sortedSpecialists = validSpecialists.sort((a, b) => {
-//       const distanceA = geolib.getDistance(
-//         { latitude, longitude },
-//         { latitude: a.location.lat, longitude: a.location.lng }
-//       );
-//       const distanceB = geolib.getDistance(
-//         { latitude, longitude },
-//         { latitude: b.location.lat, longitude: b.location.lng }
-//       );
-//       return distanceA - distanceB;
-//     });
-
-//     console.log(sortedSpecialists);
-
-//     // Check if there are any valid specialists
-//     if (sortedSpecialists.length > 0) {
-//       // Return the nearest specialist
-//       const nearestSpecialist = sortedSpecialists[0];
-//       console.log(nearestSpecialist);
-//       const nearestSpecialistEmail = nearestSpecialist.email;
-//       res.redirect(
-//         302,
-//         `/patient/connect?patientEmail=${email}&specialistEmail=${nearestSpecialistEmail}`
-//       );
-//     } else {
-//       console.log("No valid specialists found.");
-//       res.status(404).json({ error: "No valid specialists found." });
-//     }
-//   } catch (error) {
-//     console.error("Error finding nearest specialist:", error);
-//     res.status(500).json({ error: "Internal Server Error" });
-//   }
-
-// };
-
 
 
 exports.find = async (req, res) => {
