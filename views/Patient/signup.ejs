@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Omari Health</title>
+    <!-- JS -->
+    <script>
+      getLocation();
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          alert("Geolocation is not supported by this browser.");
+        }
+      }
+
+      function showPosition(position) {
+        if (!position) {
+          alert(
+            "Omari Health needs your location to connecting you with a practitioner close to you!"
+          );
+        } else {
+          document.getElementById("latitude").value = position.coords.latitude;
+          document.getElementById("longitude").value =
+            position.coords.longitude;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="w-screen h-screen flex">
+      <div class="relative flex flex-col m-auto">
+        <p
+          class="text-center text-[#3A3A3A] text-[24px] font-semibold leading-9"
+        >
+          Welcome my friend!
+        </p>
+        <p
+          class="pt-[10px] text-[#3A3A3A] text-center text-[14px] leading-7 font-nomral w-[90%] mx-auto h-[84px]"
+        >
+          Let’s get you signed up. You are one step away from prime health care
+        </p>
+
+        <div
+          class="pt-2 mx-auto text-red-600 text-[14px] text-center leading-7 font-nomral w-[350px] h-[84px]d"
+        >
+          <%= error %>
+        </div>
+        <div required class="flex flex-col gap-5 pt-[10px]">
+          <form
+            method="post"
+            action="/patient/signup"
+            required
+            class="flex flex-col gap-2.5 pt-[30px]"
+          >
+            <input
+              placeholder="Full Name"
+              type="text"
+              required
+              name="fullName"
+              class="focus:border-[#EEEEEE] mx-auto text-[#3A3A3A] text-[13px] leading-5 bg-[#EEEEEE] w-[90%] h-[53px] rounded-full p-4"
+            />
+            <input
+              placeholder="Email address"
+              type="email"
+              required
+              name="email"
+              class="focus:border-[#EEEEEE] mx-auto text-[#3A3A3A] text-[13px] leading-5 bg-[#EEEEEE] w-[90%] h-[53px] rounded-full p-4"
+            />
+            <input
+              id="password"
+              placeholder="Password"
+              required
+              type="password"
+              name="password"
+              class="focus:border-[#EEEEEE] mx-auto text-[#3A3A3A] text-[13px] leading-5 bg-[#EEEEEE] w-[90%] h-[53px] rounded-full p-4"
+            />
+            <input type="hidden" id="latitude" name="latitude" required />
+            <input type="hidden" id="longitude" name="longitude" required />
+
+            <button
+              required
+              class="mt-5 w-[90%] mx-auto h-[53px] text-white bg-[#3A3A3A] rounded-full"
+            >
+              Proceed
+            </button>
+          </form>
+        </div>
+        <p
+          required
+          class="pt-[15px] mx-auto cursor-pointer text-center text-[14px] leading-7 font-nomral text-[#3A3A3A] w-[350px] h-[84px]"
+        >
+          Already have an account?
+          <span required class="font-bold"
+            ><a href="/patient/login">Login</a></span
+          >
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
