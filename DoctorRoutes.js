@@ -6,9 +6,9 @@ const Doctor = require("./Doctor");
 router.get("/signup", (req, res) => {
   const error = req.query.error;
   if (error) {
-    res.render("Doctor/signup", { error: "Email already exists" });
+    res.render("Doctor/Signup", { error: "Email already exists" });
   } else {
-    res.render("Doctor/signup", { error: "" });
+    res.render("Doctor/Signup", { error: "" });
   }
 });
 router.post("/signup", controller.signup);
