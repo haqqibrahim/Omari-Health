@@ -27,7 +27,7 @@ exports.signup = async (req, res) => {
 
     // Redirect to success page or send a response
     // res.redirect("/patient/home");
-    res.redirect(302, `/login`);
+    res.redirect(302, `/patient/login`);
   } catch (error) {
     // Handle the error appropriately
     console.error("Error creating patient:", error);
