@@ -25,7 +25,7 @@ exports.signup = async (req, res) => {
     await doctor.save();
 
     // Redirect to success page with success message in query string
-    res.redirect(302, `/doctor/home/${email}`);
+    res.redirect(302, `/doctor/login`);
   } catch (error) {
     // Redirect to error page with error message in query string
     // Handle the error appropriately
