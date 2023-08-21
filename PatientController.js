@@ -58,7 +58,7 @@ exports.login = async (req, res) => {
 
 exports.find = async (req, res) => {
   try {
-    const { latitude, longitude, specialty,email } = req.body;
+    const { latitude, longitude, specialty, email } = req.body;
 
     // Find all specialists of the specified specialty
     const specialists = await Doctor.find({ specialty });
@@ -86,11 +86,19 @@ exports.find = async (req, res) => {
 
     // Return the nearest specialist
     const nearestSpecialist = distances[0].specialist;
-    const nearestSpecialistEmail = nearestSpecialist.email
-     res.redirect(
-        302,
-        `/patient/connect?patientEmail=${email}&specialistEmail=${nearestSpecialistEmail}`
-      );
+    const nearestSpecialistEmail = nearestSpecialist.email;
+    // console.log the nearest specialist found with the distance in meters
+    // console.log only the distance
+    console.log(
+      `Nearest specialist distance: ${distances[0].distance.toLocaleString(
+        "en-US"
+      )} meters`
+    );
+    const meters = distances[0].distance.toLocaleString("en-US");
+    res.redirect(
+      302,
+      `/patient/connect?patientEmail=${email}&specialistEmail=${nearestSpecialistEmail}&meters=${meters}`
+    );
   } catch (error) {
     console.error("Error finding nearest specialist:", error);
     res.status(500).json({ error: "Internal Server Error" });

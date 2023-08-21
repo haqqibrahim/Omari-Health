@@ -39,11 +39,12 @@ router.get("/home/:email", async (req, res) => {
 router.post("/find", controller.find);
 
 router.get("/connect", async (req, res) => {
-  const { patientEmail, specialistEmail } = req.query;
+  const { patientEmail, specialistEmail, meters } = req.query;
   const patient = await Patient.findOne({ email: patientEmail });
   const doctor = await Doctor.findOne({ email: specialistEmail });
+  const meter = meters.toLocaleString()
   // use patientEmail and specialistEmail as needed
-  res.render("Patient/connect", { patient, doctor });
+  res.render("Patient/connect", { patient, doctor, meter });
 });
 module.exports = router;
 
