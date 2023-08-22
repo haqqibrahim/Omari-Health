@@ -116,18 +116,33 @@
               class="focus:border-[#EEEEEE] mx-auto text-[#3A3A3A] text-[13px] leading-5 bg-[#EEEEEE] w-[90%] h-[53px] rounded-3xl p-4"
             ></div>
             <script>
-              const longitudeInput = document.getElementById("longitude");
-              const longitudeValue = longitudeInput.value;
-              const latitudeInput = document.getElementById("longitude");
-              const latitudeValue = longitudeInput.value;
-              var map = L.map("map").setView(
-                [longitudeValue, latitudeValue],
-                13
-              );
+              getLocation();
+              function getLocation() {
+                if (navigator.geolocation) {
+                  navigator.geolocation.getCurrentPosition(showPosition);
+                } else {
+                  alert("Geolocation is not supported by this browser.");
+                }
+              }
+
+              function showPosition(position) {
+                if (!position) {
+                  alert(
+                    "Omari Health needs your location to connecting you with a practitioner close to you!"
+                  );
+                } else {
+                 
+                    var map = L.map("map", {
+                center: [ position.coords.latitude,  position.coords.longitude],
+                zoom: 13,
+              });
               L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-                maxZoom: 5,
+                maxZoom: 20,
                 attribution: "© OpenStreetMap",
               }).addTo(map);
+                }
+              }
+              
             </script>
             <button
               required
