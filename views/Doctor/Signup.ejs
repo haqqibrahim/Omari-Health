@@ -110,40 +110,7 @@
               readonly
               required
             />
-            <!-- <div
-              style="height: 180px"
-              id="map"
-              class="focus:border-[#EEEEEE] mx-auto text-[#3A3A3A] text-[13px] leading-5 bg-[#EEEEEE] w-[90%] h-[53px] rounded-3xl p-4"
-            ></div>
-            <script>
-              getLocation();
-              function getLocation() {
-                if (navigator.geolocation) {
-                  navigator.geolocation.getCurrentPosition(showPosition);
-                } else {
-                  alert("Geolocation is not supported by this browser.");
-                }
-              }
-
-              function showPosition(position) {
-                if (!position) {
-                  alert(
-                    "Omari Health needs your location to connecting you with a practitioner close to you!"
-                  );
-                } else {
-                 
-                    var map = L.map("map", {
-                center: [ position.coords.latitude,  position.coords.longitude],
-                zoom: 13,
-              });
-              L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-                maxZoom: 20,
-                attribution: "© OpenStreetMap",
-              }).addTo(map);
-                }
-              }
-              
-            </script> -->
+           
             <button
               required
               class="mt-5 w-[90%] mx-auto h-[53px] text-white bg-[#3A3A3A] rounded-full"
