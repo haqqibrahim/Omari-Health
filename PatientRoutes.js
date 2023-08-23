@@ -42,6 +42,8 @@ router.get("/connect", async (req, res) => {
   const { patientEmail, specialistEmail, meters } = req.query;
   const patient = await Patient.findOne({ email: patientEmail });
   const doctor = await Doctor.findOne({ email: specialistEmail });
+    console.log(doctor.location.coordinates);
+
   const meter = meters.toLocaleString()
   // use patientEmail and specialistEmail as needed
   res.render("Patient/connect", { patient, doctor, meter });
