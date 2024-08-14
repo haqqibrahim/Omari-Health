@@ -55,7 +55,7 @@ let transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: "dev.omari.ai@gmail.com",
-    pass: "aswbgigvkdbtwoww",
+    pass: "rypv hpqt xerp kurz",
   },
 });
 
@@ -69,7 +69,7 @@ router.post("/link", async (req, res) => {
   };
   let mailOptions2 = {
     from: "dev.omari.ai@gmail.com", // sender address
-    to: "yusraadeyeri45@gmail.com", // list of receivers
+    to: "enessyibrahim@gmail.com", // list of receivers
     subject: "New Omari Health consultation meeting", // Subject line
     text: `There is a new consultation meeting in progress. ${link}`, // plain text body
   };
